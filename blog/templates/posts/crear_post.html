@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load colaborador_tags %}
+
+{% block contenido %}
+
+<center>
+{% if user.is_superuser or request.user|has_group:"Colaborador" %}
+    <div id="conteiner2">
+    <div id="conteiner2">
+        <a id="enviar" href="{% url 'apps.posts:crear_categoria' %}" class="btn btn-success btn-lg px-3"  >Crear nueva categoría</a>
+    </div>
+
+    <h1 style="color: white; font-family: fantasy;">Crear Post</h1>
+    <form method="POST" enctype="multipart/form-data" style="color: white;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success btn-lg px-3"  type="submit" value="Guardar" id="enviar">
+    </form>
+{% else %}
+    <h1>Solo usuarios con permisos pueden acceder a esta página</h1>
+</div>
+{% endif %}
+</center>
+{% endblock %}

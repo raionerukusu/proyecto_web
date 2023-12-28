@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<center>
+<br>
+<br>
+<br>
+<div id="conteiner2">
+    <br>
+    <br>
+    <ul>
+        <h1 style="color: white;">Usuarios</h1>
+        <br>
+        <br>
+
+        {% for usuario in usuarios %}
+            <li style="color: white; border: solid; list-style: none; border-color: darkslategrey;" >{{ usuario.username }}
+                (<a style="color: white" 
+                href="{% url 'apps.usuario:usuario_delete' pk=usuario.pk %}">Eliminar</a>)</li> 
+        {% empty %}
+                <li>No hay usuarios registrados</li>
+        {% endfor %}
+    </ul>
+</div>
+</center>
+{% endblock %}

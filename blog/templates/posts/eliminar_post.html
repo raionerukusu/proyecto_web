@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%  block contenido %}
+<center>
+    <br>
+    <br>
+    <br>
+<div id="conteiner2">
+    <h1 style="color: white;">Eliminar Post</h1>
+    <p style="color: white;">¿Estás seguro de que deseas eliminar este Post ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Si, eliminar" class="btn btn-success btn-lg px-3" id="enviar">
+        <a style="color: white" href="{% url 'apps.posts:posts' %}">No, cancelar</a>
+    </form>
+</div>
+</center>
+{% endblock %}

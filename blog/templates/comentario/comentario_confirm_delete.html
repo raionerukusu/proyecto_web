@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load colaborador_tags %}
+
+{% block contenido %}
+<center>
+{% if user.is_superuser or request.user|has_group:"Colaborador" or comentario.usuario == user %}
+    <div id="conteiner2">
+    <h1>Eliminar comentario</h1>
+    <p>¿Estás seguro que deseas eliminr este comentario?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Si, elimimar">
+        <a style="color: white;" href="{{ object.get_absolute_url }}">No, cancelar</a>
+    </form>
+    </div>
+{% else %}
+    <div id="conteiner2">
+        <h1>Solo usuarios con permisos pueden acce3der a esta página</h1>
+
+    </div>
+{% endif %}
+</center>
+{% endblock %}

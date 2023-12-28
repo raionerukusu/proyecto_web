@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<center>
+    <br>
+    <br>
+    <br>
+<div id="conteiner2">
+        <a id="enviar"  class="btn btn-success btn-lg px-3"
+        href="{% url 'apps.posts:crear_categoria' %}?next={% url 'apps.posts:post_update' pk=object.id %}">
+        Crear nueva categoría    </a>
+    <br>
+    <h1 style="color: white;">Modificar Post</h1>
+    <form method="post" enctype="multipart/form-data" style="color: white;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Guardar cambios" id="enviar" class="btn btn-success btn-lg px-3">
+    </form>
+</div>
+</center>
+{% endblock %}

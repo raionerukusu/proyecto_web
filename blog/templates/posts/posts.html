@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load colaborador_tags %}
+{% block contenido %}
+<br> 
+<br>
+<br> 
+<br>
+{% if user.is_superuser or request.user|has_group:"Colaborador" %}
+
+    <div id="conteiner2">
+        <div id="crear_post">
+            <h4 style="float: left; color: white;">Crea un nuevo post</h4><a id="nuevo_post" class="btn btn-success btn-lg px-3" href="{% url 'apps.posts:crear_post' %}">Crear nuevo post</a>
+            <br>
+        </div>
+    </div>
+        <br>
+   
+{% endif %}
+<h2 style="color: white;"> Ordenar por: </h2>
+<ul>
+    <a  class="btn btn-success btn-lg px-3" href="{% url 'apps.posts:posts' %}?orden=reciente" id="enviar">Más reciente</a>
+    <a class="btn btn-success btn-lg px-3" href="{% url 'apps.posts:posts' %}?orden=antiguo" id="enviar">Más antiguo</a>
+    <a class="btn btn-success btn-lg px-3" href="{% url 'apps.posts:posts' %}?orden=alfabetico" id="enviar">Orden alfabetico</a>
+</ul>
+
+    {% for i in posts %}
+    <br>
+    <div id="posts">
+        <br>
+        <li class="titulo">{{ i.titulo }}</li>
+        <li class="subtitulo">{{ i.subtitulo }}</li>
+        <li class="categoria">Categoria: {{ i.categoria }}</li>
+        <a class="btn btn-success btn-lg px-3" href="{% url 'apps.posts:post_individual' i.id %}" id="entrar">
+            Igresar a este Posts
+        </a><br><br>
+    </div>
+    
+
+        {% empty %}
+        <h1>No hay registros</h1>
+
+
+    {% endfor %}
+    <br><br>
+    <br><br><br><br>
+    <br><br>
+
+
+</div>
+{% endblock %}

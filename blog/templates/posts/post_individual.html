@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load colaborador_tags %}
+
+<br>
+
+{% block contenido %}
+<center>
+<div id="conteiner2">
+<li id="titulo">{{ posts.titulo }}</li>
+<img id="imagen" src="{{ posts.imagen.url }}" alt="">
+<br>
+<li id="categoria">Categoria: {{ posts.categoria }}</li>
+<br>
+<li id="subtitulo">{{ posts.subtitulo }}</li>
+
+<br><br>
+<li id="texto">{{ posts.texto }}</li>
+
+{% if user.is_superuser or request.user|has_group:"Colaborador" %}
+<a class="btn btn-success btn-lg px-3" id="enviar" href="{% url 'apps.posts:post_update' pk=posts.id %}">Modificar Post</a>
+<a class="btn btn-success btn-lg px-3" id="enviar" href="{% url 'apps.posts:post_delete' pk=posts.pk %}">Eliminar Post</a>
+</div>
+
+{% endif %}
+
+{% include 'comentario/crear_comentario.html' %}
+
+</center>
+{% endblock %}

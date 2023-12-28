@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<center>
+<div id="conteiner2">
+    <h1 style="color:white">Posts por Categoria</h1>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'apps.posts:post_individual' id=post.id %}">{{ post.titulo }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</center>
+{% endblock %}

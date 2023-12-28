@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+<br><br>
+<br><br>
+<div id="conteiner">
+
+    <ul class="slider">
+        <li id="slide1">
+            <img src="{% static 'img/slide1.jpg' %}" />
+        </li>
+        <li id="slide2">
+            <img src="{% static 'img/slide2.jpg' %}" />
+        </li>
+        <li id="slide3">
+            <img src="{% static 'img/slide3.jpg' %}">
+         
+        </li>
+    </ul>
+
+    <ul class="menu">
+        <li>
+            <a href="#slide1"></a>
+        </li>
+        <li>
+            <a href="#slide2"></a>
+        </li>
+        <li>
+            <a href="#slide3"></a>
+        </li>
+    </ul>
+
+</div>
+
+
+</div>
+<br><br>
+
+
+{% endblock %}

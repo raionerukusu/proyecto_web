@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load colaborador_tags %}
+
+{% block contenido %}
+<center>
+    {% if user.is_superuser or comentario.usuario == user %}
+<br>
+<br>
+<br>
+<br><br>
+<div id="conteiner2">
+    <h1 style="color: white;">Editar Comentrio</h1>
+    <form method="POST" style="color: white;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Guardar cambios" class="btn btn-success btn-lg px-3" id="enviar">
+    </form>
+</div>
+    {% else %}
+    <div id="conteiner2">
+        <h1>Solo usuarios con permisos pueden acceder a esta página</h1>
+    </div>
+
+    {% endif %}
+</center>
+{% endblock %}

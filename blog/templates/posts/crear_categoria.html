@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<center>
+<br><br>
+<br>
+<br>
+<br>
+    <div class="conteiner2">
+    <h1 style="color: white;">Agregar nueva categoría</h1>
+    <form method="post" style="color: white;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Agregar" class="btn btn-success btn-lg px-3" id="enviar" >
+    </form>
+    <br>
+    <div class="conteiner2">
+        <a id="enviar" href="{% url 'apps.posts:categoria_list' %}" class="btn btn-success btn-lg px-3">Listar todas las categorias</a>
+    </div>
+</div>
+</center>
+
+{% endblock %}
